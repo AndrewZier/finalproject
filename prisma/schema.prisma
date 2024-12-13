@@ -14,8 +14,6 @@ model User {
   id              Int              @id @default(autoincrement())
   email           String           @unique
   name            String?
-  password        String
-  profilePicture  String?
   trips           HuntingTrip[]
   posts           CommunityPost[]
   comments        Comment[]
@@ -26,7 +24,6 @@ model HuntingTrip {
   location   String
   date       DateTime
   notes      String?
-  weather    String?
   user       User             @relation(fields: [userId], references: [id])
   userId     Int
   sightings  WildlifeSighting[]
@@ -37,7 +34,6 @@ model WildlifeSighting {
   species   String
   quantity  Int
   timestamp DateTime
-  photo     String?
   trip      HuntingTrip @relation(fields: [tripId], references: [id])
   tripId    Int
 }
